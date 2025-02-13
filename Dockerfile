@@ -1,24 +1,11 @@
 FROM alpine:latest
-RUN \
-	apk add --update --no-cache \
-		tini \
-		perl \
-		ca-certificates \
-		wget \
-		perl-io-socket-ssl \
-	&& \
-	update-ca-certificates
-
-# Use tini 'init' system to handle signals properly:
-# https://github.com/krallin/tini
+RUN apk add --update --no-cache tini perl ca-certificates wget perl-io-socket-ssl && update-ca-certificates
+# use https://github.com/krallin/tini init to handle command signals properly
 ENTRYPOINT ["/sbin/tini", "--"]
-
-# Install ddclient using simple script:
-COPY install-ddclient.sh /tmp/
+# run install.sh to install ddclient
+COPY install.sh /tmp/
 RUN /tmp/install-ddclient.sh
-
-# Set cmd for ddclient:
+# set cmd for ddclient
 CMD ["/usr/bin/ddclient", "-daemon", "300", "-foreground", "-noquiet", "-debug"]
-
-# Config volume
+# define volume
 VOLUME ["/etc/ddclient"]
