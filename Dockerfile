@@ -1,5 +1,5 @@
 FROM alpine:latest
-RUN apk add --update --no-cache tini perl ca-certificates wget perl-io-socket-ssl && update-ca-certificates
+RUN apk add --update --no-cache perl perl-io-socket-ssl tini curl ca-certificates && update-ca-certificates
 # use https://github.com/krallin/tini init to handle command signals properly
 ENTRYPOINT ["/sbin/tini", "--"]
 # run install.sh to install ddclient
