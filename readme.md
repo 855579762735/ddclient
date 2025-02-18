@@ -1,4 +1,5 @@
 A simple alpine based dockerfile for creating ddclient, just four files needed.
+> This Dockerfile always builds the latest version of ddclient.
 ## Quick Setup
 ### Dockerfile
 Just download the Dockerfile from this repo. You can save it in `/your/desired/Dockerfile/location`.
