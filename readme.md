@@ -23,3 +23,7 @@ test:
       - '/your/desired/setup/location/ddclient.conf:/etc/ddclient/ddclient.conf:rw'
       - '/your/desired/setup/location/ddclient.cache:/var/cache/ddclient/ddclient.cache:rw'
 ```
+You can apply any `user:` in your docker-compose.yaml so long as your `ddclient.conf` and `ddclient.cache` are owned by that user.
+```
+sudo chown -R desired_user:desired_group /your/desired/setup/location/ddclient*
+```
