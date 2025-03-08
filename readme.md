@@ -15,9 +15,8 @@ cd /your/desired/setup/location && touch ddclient.cache
 ```
 ### docker-compose.yaml
 ```yaml
-test:
+ddclient:
     container_name: ddclient
-    image: dockerfile/ddclient
     build: /your/desired/Dockerfile/location
     volumes:
       - '/your/desired/setup/location/ddclient.conf:/etc/ddclient/ddclient.conf:rw'
