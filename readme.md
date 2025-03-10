@@ -14,6 +14,7 @@ In order for ddclient to remember it's last update this file must be created;
 cd /your/desired/setup/location && touch ddclient.cache
 ```
 ### docker-compose.yaml
+Create a `docker-compose.yaml` file somewhere on your localhost to read the Dockerfile and create an image.
 ```yaml
 ddclient:
     container_name: ddclient
@@ -21,6 +22,10 @@ ddclient:
     volumes:
       - '/your/desired/setup/location/ddclient.conf:/etc/ddclient/ddclient.conf:rw'
       - '/your/desired/setup/location/ddclient.cache:/var/cache/ddclient/ddclient.cache:rw'
+```
+Build the image and start the container;
+```
+sudo docker compose buil ddclient && sudo docker compose up -d ddclient
 ```
 You can apply any `user:` in your docker-compose.yaml so long as your `ddclient.conf` and `ddclient.cache` are owned by that user.
 ```
